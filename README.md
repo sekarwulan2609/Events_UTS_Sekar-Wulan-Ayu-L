@@ -6,7 +6,8 @@ You can click the Preview link to take a look at your changes.
 Nama : Sekar Wulan Ayu Lisanti 
 Nim :21.01.55.0005
 
-###
+Deskripsi project :
+Project ini merupakan project Ujian Tengah Semester web service development. Project ini berisi Web Service REST untuk sistem manajemen sesuai objek yang ditentukan menggunakan PHP dan MySQL. Web Service harus mendukung operasi CRUD. Dan dapat di uji menggunakan postman. Dalam project ini events menjadi objek Rest API, dengan struktur tabel events terdiri dari id, name, date, location, dan price.
  ```sql
 CREATE TABLE events (
     id INT AUTO_INCREMENT PRIMARY KEY,
@@ -25,5 +26,19 @@ INSERT INTO events (name, date, location, price) VALUES
 ('wedding', '2024-12-28', 'Semarang', '80000000');
 ```
 ###
+
+Daftar Endpoint API
+1. Menampilkan semua data
+   GET : http://localhost/rest_events/events_api.php
+2. Menampilkan detail data berdasarkan id
+   GET : http://localhost/rest_events/events_api.php/3
+3. Menambahkan data baru
+   POST : http://localhost/rest_events/events_api.php
+4. Mengupdate data berdasarkan ID
+   PUT : http://localhost/rest_events/events_api.php/2
+5. Menghapus data berdasarkan ID
+   DELETE : http://localhost/rest_events/events_api.php/4
+
+Cara instalasi dan penggunaan 
 
 
