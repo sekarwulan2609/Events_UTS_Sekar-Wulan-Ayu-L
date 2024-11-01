@@ -3,8 +3,8 @@
 sekarwulan2609/sekarwulan2609 is a ✨ special ✨ repository because its `README.md` (this file) appears on your GitHub profile.
 You can click the Preview link to take a look at your changes.
 --->
-Nama : Sekar Wulan Ayu Lisanti 
-Nim :21.01.55.0005
+Nama : Sekar Wulan Ayu Lisanti <br>
+Nim :21.01.55.0005 </br>
 
 Deskripsi project :
 Project ini merupakan project Ujian Tengah Semester web service development. Project ini berisi Web Service REST untuk sistem manajemen sesuai objek yang ditentukan menggunakan PHP dan MySQL. Web Service harus mendukung operasi CRUD. Dan dapat di uji menggunakan postman. Dalam project ini events menjadi objek Rest API, dengan struktur tabel events terdiri dari id, name, date, location, dan price.
