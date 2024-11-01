@@ -30,10 +30,10 @@ INSERT INTO events (name, date, location, price) VALUES
 Daftar Endpoint API
 1. Menampilkan semua data
    <br>Method : GET</br>
-   <br>URL: http://localhost/rest_events/events_api.php</br>
+   URL: http://localhost/rest_events/events_api.php
 2. Menampilkan detail data berdasarkan id (untuk events dengan ID 3)
    <br>Method : GET</br>
-   <br>URL: http://localhost/rest_events/events_api.php/3</br>
+   URL: http://localhost/rest_events/events_api.php/3
 4. Menambahkan data baru
    Method : POST
    <br>URL : http://localhost/rest_events/events_api.php</br>
