@@ -30,13 +30,25 @@ INSERT INTO events (name, date, location, price) VALUES
 Daftar Endpoint API
 1. Menampilkan semua data
    GET : http://localhost/rest_events/events_api.php
-2. Menampilkan detail data berdasarkan id
+2. Menampilkan detail data berdasarkan id (untuk events dengan ID 3)
    GET : http://localhost/rest_events/events_api.php/3
 3. Menambahkan data baru
-   POST : http://localhost/rest_events/events_api.php
-4. Mengupdate data berdasarkan ID
-   PUT : http://localhost/rest_events/events_api.php/2
-5. Menghapus data berdasarkan ID
+   Method : POST
+   URL : http://localhost/rest_events/events_api.php
+   Headers :
+   1. Key: Content-Type
+   2. Value: application/json
+   Body:
+   1. Pilih "raw" dan "JSON"
+5. Mengupdate data berdasarkan ID (untuk events dengan ID 2)
+   Method : PUT
+   URL : http://localhost/rest_events/events_api.php/2
+   Headers :
+   1. Key: Content-Type
+   2. Value: application/json
+   Body:
+   1. Pilih "raw" dan "JSON"
+7. Menghapus data berdasarkan ID (untuk events dengan ID 4)
    DELETE : http://localhost/rest_events/events_api.php/4
 
 Cara instalasi dan penggunaan 
