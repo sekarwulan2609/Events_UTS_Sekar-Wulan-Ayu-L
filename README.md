@@ -4,7 +4,7 @@ sekarwulan2609/sekarwulan2609 is a ✨ special ✨ repository because its `READM
 You can click the Preview link to take a look at your changes.
 --->
 Nama : Sekar Wulan Ayu Lisanti <br>
-Nim :21.01.55.0005 </br>
+Nim : 21.01.55.0005 </br>
 
 Deskripsi project :
 Project ini merupakan project Ujian Tengah Semester web service development. Project ini berisi Web Service REST untuk sistem manajemen sesuai objek yang ditentukan menggunakan PHP dan MySQL. Web Service harus mendukung operasi CRUD. Dan dapat di uji menggunakan postman. Dalam project ini events menjadi objek Rest API, dengan struktur tabel events terdiri dari id, name, date, location, dan price.
@@ -35,7 +35,7 @@ Daftar Endpoint API
 3. Menambahkan data baru
    Method : POST
    URL : http://localhost/rest_events/events_api.php
-   Headers :
+   <br>Headers :</br>
    1. Key: Content-Type
    2. Value: application/json
    Body:
@@ -43,7 +43,7 @@ Daftar Endpoint API
 5. Mengupdate data berdasarkan ID (untuk events dengan ID 2)
    Method : PUT
    URL : http://localhost/rest_events/events_api.php/2
-   Headers :
+   <br>Headers :</br>
    1. Key: Content-Type
    2. Value: application/json
    Body:
