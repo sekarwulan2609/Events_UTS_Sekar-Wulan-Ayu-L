@@ -35,8 +35,8 @@ Daftar Endpoint API
    <br>Method : GET</br>
    URL: http://localhost/rest_events/events_api.php/3
 4. Menambahkan data baru
-   Method : POST
-   <br>URL : http://localhost/rest_events/events_api.php</br>
+   <br>Method : POST</br>
+   URL : http://localhost/rest_events/events_api.php
    <br>Headers :</br>
    1. Key: Content-Type
    2. Value: application/json
@@ -44,7 +44,7 @@ Daftar Endpoint API
    1. Pilih "raw" dan "JSON"
 5. Mengupdate data berdasarkan ID (untuk events dengan ID 2)
    <br>Method : PUT</br>
-   <br>URL : http://localhost/rest_events/events_api.php/2</br>
+   URL : http://localhost/rest_events/events_api.php/2
    <br>Headers :</br>
    1. Key: Content-Type
    2. Value: application/json
@@ -52,7 +52,7 @@ Daftar Endpoint API
    1. Pilih "raw" dan "JSON"
 7. Menghapus data berdasarkan ID (untuk events dengan ID 4)
    <br>Method : DELETE</br>
-   <br>URL : http://localhost/rest_events/events_api.php/4</br>
+   URL : http://localhost/rest_events/events_api.php/4
 
 Cara instalasi dan penggunaan 
 
