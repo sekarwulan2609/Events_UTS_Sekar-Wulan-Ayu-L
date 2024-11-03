@@ -48,6 +48,7 @@ Daftar Endpoint API
     "location": "Surabaya",
     "price": 5000000
     }
+    ```
     ###
 5. Mengupdate data berdasarkan ID (untuk events dengan ID 2)
    <br>Method : PUT</br>
@@ -62,7 +63,9 @@ Daftar Endpoint API
     "date": "2024-10-04",
     "location": "Jakarta",
     "price": "400000"
-   } ###
+   }
+    ```
+    ###
 7. Menghapus data berdasarkan ID (untuk events dengan ID 4)
    <br>Method : DELETE</br>
    URL : http://localhost/rest_events/events_api.php/4
