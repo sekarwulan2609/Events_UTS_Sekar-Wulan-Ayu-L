@@ -41,13 +41,14 @@ Daftar Endpoint API
    1. Key: Content-Type
    2. Value: application/json
    3. Body: Pilih "raw" dan "JSON" lalu isi
-   <br> {
+    ```sql
+    {
     "name": "ulang tahun",
     "date": "2024-11-19",
     "location": "Surabaya",
     "price": 5000000
     }
-    </br>
+    ###
 5. Mengupdate data berdasarkan ID (untuk events dengan ID 2)
    <br>Method : PUT</br>
    URL : http://localhost/rest_events/events_api.php/2
@@ -55,12 +56,13 @@ Daftar Endpoint API
    1. Key: Content-Type
    2. Value: application/json
    3. Body:  Pilih "raw" dan "JSON" lalu isi 
-   <br>{
+    ```sql
+    {
     "name": " Bazar ",
     "date": "2024-10-04",
     "location": "Jakarta",
     "price": "400000"
-   } </br>
+   } ###
 7. Menghapus data berdasarkan ID (untuk events dengan ID 4)
    <br>Method : DELETE</br>
    URL : http://localhost/rest_events/events_api.php/4
