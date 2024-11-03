@@ -15,14 +15,14 @@ Alat yang Dibutuhkan
 3. Postman
 
 1. Langkah-langkah 
-    1. Persiapan Lingkungan
-    2. Instal XAMPP jika belum ada.
-    3. Buat folder baru bernama rest_events di dalam direktori htdocs XAMPP Anda.
+    a. Persiapan Lingkungan
+    b. Instal XAMPP jika belum ada.
+    c. Buat folder baru bernama rest_events di dalam direktori htdocs XAMPP Anda.
 2. Membuat Database 
-     1. Buka phpMyAdmin
-     2. Buat database baru bernama Events 
-     3. Pilih database Events , lalu buka tab SQL
-     4. Jalankan query SQL berikut untuk membuat tabel dan menambahkan data sampel:
+     a. Buka phpMyAdmin
+     b. Buat database baru bernama Events 
+     c. Pilih database Events , lalu buka tab SQL
+     d. Jalankan query SQL berikut untuk membuat tabel dan menambahkan data sampel:
  ```sql
 CREATE TABLE events (
     id INT AUTO_INCREMENT PRIMARY KEY,
@@ -42,9 +42,9 @@ INSERT INTO events (name, date, location, price) VALUES
 ```
 ###
 3. Membuat File PHP untuk Web Service
-   1. Buka text editor .
-   2. Buat file baru dan simpan sebagai events_api.php di dalam folder rest_events.
-   3. Salin dan tempel kode berikut ke dalam events_api.php:
+   a. Buka text editor .
+   b. Buat file baru dan simpan sebagai events_api.php di dalam folder rest_events.
+   c. Salin dan tempel kode berikut ke dalam events_api.php:
 
  ```php 
 <?php
@@ -164,18 +164,18 @@ switch ($method) {
 ###
 
 4. Pengujian dengan Postman
-    1. Buka Postman
-    2. Buat request baru untuk setiap operasi berikut:
+    a. Buka Postman
+    b. Buat request baru untuk setiap operasi berikut:
     Daftar Endpoint API
-    1. Menampilkan semua data
+    a. Menampilkan semua data
        <br>Method : GET</br>
        URL: http://localhost/rest_events/events_api.php
        Klik "Send"
-    3. Menampilkan detail data berdasarkan id (untuk events dengan ID 3)
+    b. Menampilkan detail data berdasarkan id (untuk events dengan ID 3)
        <br>Method : GET</br>
        URL: http://localhost/rest_events/events_api.php/3
        Klik "Send"
-    5. Menambahkan data baru
+    c. Menambahkan data baru
        <br>Method : POST</br>
        URL : http://localhost/rest_events/events_api.php
        <br>Headers :</br>
@@ -192,7 +192,7 @@ switch ($method) {
           ```
           ###
          Klik "Send"
-    6. Mengupdate data berdasarkan ID (untuk events dengan ID 2)
+    d. Mengupdate data berdasarkan ID (untuk events dengan ID 2)
        <br>Method : PUT</br>
        URL : http://localhost/rest_events/events_api.php/2
        <br>Headers :</br>
@@ -209,7 +209,7 @@ switch ($method) {
         ```
         ###
        Klik "Send"
-    7. Menghapus data berdasarkan ID (untuk events dengan ID 4)
+    e. Menghapus data berdasarkan ID (untuk events dengan ID 4)
        <br>Method : DELETE</br>
        URL : http://localhost/rest_events/events_api.php/4
        Klik "Send"
