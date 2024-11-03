@@ -14,11 +14,11 @@ Alat yang Dibutuhkan
 2. Text editor (misalnya Visual Studio Code, Notepad++, dll)
 3. Postman
 
-1. Langkah-langkah 
+1. Langkah-langkah :
     1. Persiapan Lingkungan
     2. Instal XAMPP jika belum ada.
     3. Buat folder baru bernama rest_events di dalam direktori htdocs XAMPP Anda.
-2. Membuat Database 
+2. Membuat Database :
      1. Buka phpMyAdmin
      2. Buat database baru bernama Events 
      3. Pilih database Events , lalu buka tab SQL
