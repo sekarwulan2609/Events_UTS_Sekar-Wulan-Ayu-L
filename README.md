@@ -14,7 +14,7 @@ Alat yang Dibutuhkan
 2. Text editor (misalnya Visual Studio Code, Notepad++, dll)
 3. Postman
 
-1. Langkah-langkah Praktikum
+1. Langkah-langkah 
     1. Persiapan Lingkungan
     2. Instal XAMPP jika belum ada.
     3. Buat folder baru bernama rest_events di dalam direktori htdocs XAMPP Anda.
