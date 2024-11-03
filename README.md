@@ -166,7 +166,7 @@ switch ($method) {
 4. Pengujian dengan Postman
     1. Buka Postman
     2. Buat request baru untuk setiap operasi berikut:
-    Daftar Endpoint API
+    <br>Daftar Endpoint API</br>
     1. Menampilkan semua data
        <br>Method : GET</br>
        URL: http://localhost/rest_events/events_api.php
