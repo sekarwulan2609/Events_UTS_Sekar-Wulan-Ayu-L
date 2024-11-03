@@ -190,8 +190,7 @@ switch ($method) {
           "price": 5000000
           }
           ```
-          ###
-          Klik "Send"
+       4. Klik "Send"
     4. Mengupdate data berdasarkan ID (untuk events dengan ID 2)
        <br>Method : PUT</br>
        URL : http://localhost/rest_events/events_api.php/2
@@ -207,7 +206,7 @@ switch ($method) {
         "price": "400000"
        }
         ````
-       Klik "Send"
+       4. Klik "Send"
     5. Menghapus data berdasarkan ID (untuk events dengan ID 4)
        <br>Method : DELETE</br>
        URL : http://localhost/rest_events/events_api.php/4
