@@ -191,7 +191,7 @@ switch ($method) {
           }
           ```
           ###
-     <br>Klik "Send"</br>
+          Klik "Send"
     4. Mengupdate data berdasarkan ID (untuk events dengan ID 2)
        <br>Method : PUT</br>
        URL : http://localhost/rest_events/events_api.php/2
@@ -206,8 +206,7 @@ switch ($method) {
         "location": "Jakarta",
         "price": "400000"
        }
-        ```
-        ###
+        ````
        Klik "Send"
     5. Menghapus data berdasarkan ID (untuk events dengan ID 4)
        <br>Method : DELETE</br>
