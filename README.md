@@ -8,6 +8,13 @@ Nim : 21.01.55.0005 </br>
 
 Deskripsi project :
 Project ini merupakan project Ujian Tengah Semester web service development. Project ini berisi Web Service REST untuk sistem manajemen sesuai objek yang ditentukan menggunakan PHP dan MySQL. Web Service harus mendukung operasi CRUD. Dan dapat di uji menggunakan postman. Dalam project ini events menjadi objek Rest API, dengan struktur tabel events terdiri dari id, name, date, location, dan price.
+
+Membuat Database 
+
+1. Buka phpMyAdmin
+2. Buat database baru bernama Events 
+3. Pilih database Events , lalu buka tab SQL
+4. Jalankan query SQL berikut untuk membuat tabel dan menambahkan data sampel:
  ```sql
 CREATE TABLE events (
     id INT AUTO_INCREMENT PRIMARY KEY,
@@ -26,6 +33,128 @@ INSERT INTO events (name, date, location, price) VALUES
 ('wedding', '2024-12-28', 'Semarang', '80000000');
 ```
 ###
+Membuat File PHP untuk Web Service
+1. Buka text editor .
+2. Buat file baru dan simpan sebagai events_api.php di dalam folder rest_events.
+3. Salin dan tempel kode berikut ke dalam events_api.php:
+
+ ```php 
+<?php
+header("Content-Type: application/json; charset=UTF-8");
+header("Access-Control-Allow-Origin: *");
+header("Access-Control-Allow-Methods: GET, POST, PUT, DELETE");
+header("Access-Control-Allow-Headers: Content-Type, Access-Control-Allow-Headers, Authorization, X-Requested-With");
+
+$method = $_SERVER['REQUEST_METHOD'];
+$request = [];
+
+if (isset($_SERVER['PATH_INFO'])) {
+    $request = explode('/', trim($_SERVER['PATH_INFO'],'/'));
+}
+
+function getConnection() {
+    $host = 'localhost';
+    $db   = 'events';
+    $user = 'root';
+    $pass = ''; // Ganti dengan password MySQL Anda jika ada
+    $charset = 'utf8mb4';
+
+    $dsn = "mysql:host=$host;dbname=$db;charset=$charset";
+    $options = [
+        PDO::ATTR_ERRMODE            => PDO::ERRMODE_EXCEPTION,
+        PDO::ATTR_DEFAULT_FETCH_MODE => PDO::FETCH_ASSOC,
+        PDO::ATTR_EMULATE_PREPARES   => false,
+    ];
+    try {
+        return new PDO($dsn, $user, $pass, $options);
+    } catch (\PDOException $e) {
+        throw new \PDOException($e->getMessage(), (int)$e->getCode());
+    }
+}
+
+function response($status, $data = NULL) {
+    header("HTTP/1.1 " . $status);
+    if ($data) {
+        echo json_encode($data);
+    }
+    exit();
+}
+
+$db = getConnection();
+
+switch ($method) {
+    case 'GET':
+        if (!empty($request) && isset($request[0])) {
+            $id = $request[0];
+            $stmt = $db->prepare("SELECT * FROM events WHERE id = ?");
+            $stmt->execute([$id]);
+            $events = $stmt->fetch();
+            if ($events) {
+                response(200, $events);
+            } else {
+                response(404, ["message" => "events not found"]);
+            }
+        } else {
+            $stmt = $db->query("SELECT * FROM events");
+            $events = $stmt->fetchAll();
+            response(200, $events);
+        }
+        break;
+    
+    case 'POST':
+        $data = json_decode(file_get_contents("php://input"));
+        if (!isset($data->name) || !isset($data->date) || !isset($data->location) || !isset($data->price)) {
+            response(400, ["message" => "Missing required fields"]);
+        }
+        $sql = "INSERT INTO events (name, date, location, price) VALUES (?, ?, ?, ?)";
+        $stmt = $db->prepare($sql);
+        if ($stmt->execute([$data->name, $data->date, $data->location, $data->price])) {
+            response(201, ["message" => "events created", "id" => $db->lastInsertId()]);
+        } else {
+            response(500, ["message" => "Failed to create events"]);
+        }
+        break;
+    
+    case 'PUT':
+        if (empty($request) || !isset($request[0])) {
+            response(400, ["message" => "events ID is required"]);
+        }
+        $id = $request[0];
+        $data = json_decode(file_get_contents("php://input"));
+        if (!isset($data->name) || !isset($data->date) || !isset($data->location) || !isset($data->price)) {
+            response(400, ["message" => "Missing required fields"]);
+        }
+        $sql = "UPDATE events SET name = ?, date = ?, location = ?, price = ? WHERE id =?";
+        $stmt = $db->prepare($sql);
+        if ($stmt->execute([$data->name, $data->date, $data->location, $data->price, $id])) {
+            response(200, ["message" => "events updated"]);
+        } else {
+            response(500, ["message" => "Failed to update events"]);
+        }
+        break;
+    
+    case 'DELETE':
+        if (empty($request) || !isset($request[0])) {
+            response(400, ["message" => "events ID is required"]);
+        }
+        $id = $request[0];
+        $sql = "DELETE FROM events WHERE id = ?";
+        $stmt = $db->prepare($sql);
+        if ($stmt->execute([$id])) {
+            response(200, ["message" => "events deleted"]);
+        } else {
+            response(500, ["message" => "Failed to delete events"]);
+        }
+        break;
+    
+    default:
+        response(405, ["message" => "Method not allowed"]);
+        break;
+}
+?>
+````
+###
+
 
 Daftar Endpoint API
 1. Menampilkan semua data
