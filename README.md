@@ -170,11 +170,11 @@ switch ($method) {
     1. Menampilkan semua data
        <br>Method : GET</br>
        URL: http://localhost/rest_events/events_api.php
-       Klik "Send"
+       <br>Klik "Send"</br>
     2. Menampilkan detail data berdasarkan id (untuk events dengan ID 3)
        <br>Method : GET</br>
        URL: http://localhost/rest_events/events_api.php/3
-       Klik "Send"
+       <br>Klik "Send"</br>
     3. Menambahkan data baru
        <br>Method : POST</br>
        URL : http://localhost/rest_events/events_api.php
@@ -191,7 +191,7 @@ switch ($method) {
           }
           ```
           ###
-         Klik "Send"
+     <br>Klik "Send"</br>
     4. Mengupdate data berdasarkan ID (untuk events dengan ID 2)
        <br>Method : PUT</br>
        URL : http://localhost/rest_events/events_api.php/2
@@ -212,7 +212,7 @@ switch ($method) {
     5. Menghapus data berdasarkan ID (untuk events dengan ID 4)
        <br>Method : DELETE</br>
        URL : http://localhost/rest_events/events_api.php/4
-       Klik "Send"
+       <br>Klik "Send"</br>
 
 
 
