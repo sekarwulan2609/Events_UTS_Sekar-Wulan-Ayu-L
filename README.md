@@ -9,12 +9,20 @@ Nim : 21.01.55.0005 </br>
 Deskripsi project :
 Project ini merupakan project Ujian Tengah Semester web service development. Project ini berisi Web Service REST untuk sistem manajemen sesuai objek yang ditentukan menggunakan PHP dan MySQL. Web Service harus mendukung operasi CRUD. Dan dapat di uji menggunakan postman. Dalam project ini events menjadi objek Rest API, dengan struktur tabel events terdiri dari id, name, date, location, dan price.
 
-Membuat Database 
+Alat yang Dibutuhkan
+1. XAMPP (atau server web lain dengan PHP dan MySQL)
+2. Text editor (misalnya Visual Studio Code, Notepad++, dll)
+3. Postman
 
-1. Buka phpMyAdmin
-2. Buat database baru bernama Events 
-3. Pilih database Events , lalu buka tab SQL
-4. Jalankan query SQL berikut untuk membuat tabel dan menambahkan data sampel:
+1. Langkah-langkah Praktikum
+    1. Persiapan Lingkungan
+    2. Instal XAMPP jika belum ada.
+    3. Buat folder baru bernama rest_events di dalam direktori htdocs XAMPP Anda.
+2. Membuat Database 
+     1. Buka phpMyAdmin
+     2. Buat database baru bernama Events 
+     3. Pilih database Events , lalu buka tab SQL
+     4. Jalankan query SQL berikut untuk membuat tabel dan menambahkan data sampel:
  ```sql
 CREATE TABLE events (
     id INT AUTO_INCREMENT PRIMARY KEY,
@@ -33,10 +41,10 @@ INSERT INTO events (name, date, location, price) VALUES
 ('wedding', '2024-12-28', 'Semarang', '80000000');
 ```
 ###
-Membuat File PHP untuk Web Service
-1. Buka text editor .
-2. Buat file baru dan simpan sebagai events_api.php di dalam folder rest_events.
-3. Salin dan tempel kode berikut ke dalam events_api.php:
+3. Membuat File PHP untuk Web Service
+   1. Buka text editor .
+   2. Buat file baru dan simpan sebagai events_api.php di dalam folder rest_events.
+   3. Salin dan tempel kode berikut ke dalam events_api.php:
 
  ```php 
 <?php
@@ -155,50 +163,56 @@ switch ($method) {
 ````
 ###
 
+4. Pengujian dengan Postman
+    1. Buka Postman
+    2. Buat request baru untuk setiap operasi berikut:
+    Daftar Endpoint API
+    1. Menampilkan semua data
+       <br>Method : GET</br>
+       URL: http://localhost/rest_events/events_api.php
+       Klik "Send"
+    3. Menampilkan detail data berdasarkan id (untuk events dengan ID 3)
+       <br>Method : GET</br>
+       URL: http://localhost/rest_events/events_api.php/3
+       Klik "Send"
+    5. Menambahkan data baru
+       <br>Method : POST</br>
+       URL : http://localhost/rest_events/events_api.php
+       <br>Headers :</br>
+       1. Key: Content-Type
+       2. Value: application/json
+       3. Body: Pilih "raw" dan "JSON" lalu isi
+          ```sql
+          {
+          "name": "ulang tahun",
+          "date": "2024-11-19",
+          "location": "Surabaya",
+          "price": 5000000
+          }
+          ```
+          ###
+         Klik "Send"
+    6. Mengupdate data berdasarkan ID (untuk events dengan ID 2)
+       <br>Method : PUT</br>
+       URL : http://localhost/rest_events/events_api.php/2
+       <br>Headers :</br>
+       1. Key: Content-Type
+       2. Value: application/json
+       3. Body:  Pilih "raw" dan "JSON" lalu isi 
+        ```sql
+        {
+        "name": " Bazar ",
+        "date": "2024-10-04",
+        "location": "Jakarta",
+        "price": "400000"
+       }
+        ```
+        ###
+       Klik "Send"
+    7. Menghapus data berdasarkan ID (untuk events dengan ID 4)
+       <br>Method : DELETE</br>
+       URL : http://localhost/rest_events/events_api.php/4
+       Klik "Send"
 
-Daftar Endpoint API
-1. Menampilkan semua data
-   <br>Method : GET</br>
-   URL: http://localhost/rest_events/events_api.php
-2. Menampilkan detail data berdasarkan id (untuk events dengan ID 3)
-   <br>Method : GET</br>
-   URL: http://localhost/rest_events/events_api.php/3
-4. Menambahkan data baru
-   <br>Method : POST</br>
-   URL : http://localhost/rest_events/events_api.php
-   <br>Headers :</br>
-   1. Key: Content-Type
-   2. Value: application/json
-   3. Body: Pilih "raw" dan "JSON" lalu isi
-    ```sql
-    {
-    "name": "ulang tahun",
-    "date": "2024-11-19",
-    "location": "Surabaya",
-    "price": 5000000
-    }
-    ```
-    ###
-5. Mengupdate data berdasarkan ID (untuk events dengan ID 2)
-   <br>Method : PUT</br>
-   URL : http://localhost/rest_events/events_api.php/2
-   <br>Headers :</br>
-   1. Key: Content-Type
-   2. Value: application/json
-   3. Body:  Pilih "raw" dan "JSON" lalu isi 
-    ```sql
-    {
-    "name": " Bazar ",
-    "date": "2024-10-04",
-    "location": "Jakarta",
-    "price": "400000"
-   }
-    ```
-    ###
-7. Menghapus data berdasarkan ID (untuk events dengan ID 4)
-   <br>Method : DELETE</br>
-   URL : http://localhost/rest_events/events_api.php/4
-
-Cara instalasi dan penggunaan 
 
 
