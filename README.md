@@ -10,7 +10,7 @@ Deskripsi project :
 Project ini merupakan project Ujian Tengah Semester web service development. Project ini berisi Web Service REST untuk sistem manajemen sesuai objek yang ditentukan menggunakan PHP dan MySQL. Web Service harus mendukung operasi CRUD. Dan dapat di uji menggunakan postman. Dalam project ini events menjadi objek Rest API, dengan struktur tabel events terdiri dari id, name, date, location, dan price.
 
 ### Tujuan
-<br>Membuat dan menguji web service REST untuk manajemen events menggunakan PHP dan MySQL.
+Membuat dan menguji web service REST untuk manajemen events menggunakan PHP dan MySQL.
 
 ### Alat yang Dibutuhkan
 1. XAMPP (atau server web lain dengan PHP dan MySQL)
