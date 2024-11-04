@@ -214,15 +214,15 @@ switch ($method) {
 <br>Daftar Endpoint API
 #### 1. Menampilkan semua data
    Method : GET
-   <br>URL: http://localhost/rest_events/events_api.php
+   <br>URL: `http://localhost/rest_events/events_api.php`
    <br>Klik "Send"
 #### 2. Menampilkan detail data berdasarkan id (untuk events dengan ID 3)
    Method : GET
-   <br>URL: http://localhost/rest_events/events_api.php/3
+   <br>URL: `http://localhost/rest_events/events_api.php/3`
    <br>Klik "Send"
 #### 3. Menambahkan data baru
    Method : POST
-   <br>URL : http://localhost/rest_events/events_api.php
+   <br>URL : `http://localhost/rest_events/events_api.php`
   <br> Headers :
    1. Key: Content-Type
    2. Value: application/json
@@ -239,7 +239,7 @@ switch ($method) {
 4. Klik "Send"
 ### 4. Mengupdate data berdasarkan ID (untuk events dengan ID 2)
    Method : PUT
-   <br>URL : http://localhost/rest_events/events_api.php/2
+   <br>URL : `http://localhost/rest_events/events_api.php/2`
    <br>Headers :
    1. Key: Content-Type
    2. Value: application/json</br>
@@ -256,7 +256,7 @@ switch ($method) {
 
 ### 5. Menghapus data berdasarkan ID (untuk events dengan ID 4)
    Method : DELETE
-   <br>URL : http://localhost/rest_events/events_api.php/4
+   <br>URL : `http://localhost/rest_events/events_api.php/4`
    <br>Klik "Send"
 
 
