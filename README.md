@@ -258,6 +258,8 @@ switch ($method) {
    Method : DELETE
    <br>URL : `http://localhost/rest_events/events_api.php/4`
    <br>Klik "Send"
+### Kesimpulan
 
+Dalam praktikum ini, telah berhasil membuat web service REST untuk events menggunakan PHP dan MySQL. Dan dapat menguji API menggunakan Postman. Praktik ini memberikan dasar yang kuat untuk pengembangan API RESTful lebih lanjut.
 
 
