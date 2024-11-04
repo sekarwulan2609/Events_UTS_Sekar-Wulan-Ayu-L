@@ -182,7 +182,7 @@ switch ($method) {
        1. Key: Content-Type
        2. Value: application/json
        3. Body: Pilih "raw" dan "JSON" lalu isi
-          ```sql
+          ```json
           {
           "name": "ulang tahun",
           "date": "2024-11-19",
@@ -198,7 +198,7 @@ switch ($method) {
        1. Key: Content-Type
        2. Value: application/json
        3. Body:  Pilih "raw" dan "JSON" lalu isi 
-        ```sql
+        ```json
         {
         "name": " Bazar ",
         "date": "2024-10-04",
