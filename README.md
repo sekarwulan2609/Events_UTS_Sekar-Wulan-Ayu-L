@@ -15,14 +15,14 @@ Project ini merupakan project Ujian Tengah Semester web service development. Pro
 3. Postman
 
 ### 1. Langkah-langkah :
-    1. Persiapan Lingkungan
-    2. Instal XAMPP jika belum ada.
-    3. Buat folder baru bernama rest_events di dalam direktori htdocs XAMPP Anda.
+   1. Persiapan Lingkungan
+   2. Instal XAMPP jika belum ada.
+   3. Buat folder baru bernama rest_events di dalam direktori htdocs XAMPP Anda.
 ### 2. Membuat Database :
-     1. Buka phpMyAdmin
-     2. Buat database baru bernama Events 
-     3. Pilih database Events , lalu buka tab SQL
-     4. Jalankan query SQL berikut untuk membuat tabel dan menambahkan data sampel:
+   1. Buka phpMyAdmin
+   2. Buat database baru bernama Events 
+   3. Pilih database Events , lalu buka tab SQL
+   4. Jalankan query SQL berikut untuk membuat tabel dan menambahkan data sampel:
  ```sql
 CREATE TABLE events (
     id INT AUTO_INCREMENT PRIMARY KEY,
@@ -87,32 +87,76 @@ function response($status, $data = NULL) {
     }
     exit();
 }
-
+function validateevents($name, $date, $location, $price) {
+    $errors = [];
+    if (empty($name)) {
+        $errors[] = "name is required";
+    }
+    if (empty($date)) {
+        $errors[] = "date is required";
+    }
+    if (empty($location)) {
+        $errors[] = "location is required";
+    }
+    if (empty($price)) {
+        $errors[] = "price is required";
+    }
+    return $errors;
+}
 $db = getConnection();
 
 switch ($method) {
     case 'GET':
         if (!empty($request) && isset($request[0])) {
-            $id = $request[0];
-            $stmt = $db->prepare("SELECT * FROM events WHERE id = ?");
-            $stmt->execute([$id]);
-            $events = $stmt->fetch();
-            if ($events) {
+            if ($request[0] === 'search') {
+                // 5.1 Search functionality
+                $searchTerm = $_GET['term'] ?? '';
+                $stmt = $db->prepare("SELECT * FROM events WHERE name LIKE ? OR location LIKE ?");
+                $searchTerm = "%$searchTerm%";
+                $stmt->execute([$searchTerm, $searchTerm]);
+                $events = $stmt->fetchAll();
                 response(200, $events);
             } else {
-                response(404, ["message" => "events not found"]);
+                // Get specific events
+                $id = $request[0];
+                $stmt = $db->prepare("SELECT * FROM events WHERE id = ?");
+                $stmt->execute([$id]);
+                $events = $stmt->fetch();
+                if ($events) {
+                    response(200, $events);
+                } else {
+                    response(404, ["message" => "events not found"]);
+                }
             }
         } else {
-            $stmt = $db->query("SELECT * FROM events");
+            // 5.2 Pagination
+            $page = isset($_GET['page']) ? (int)$_GET['page'] : 1;
+            $limit = isset($_GET['limit']) ? (int)$_GET['limit'] : 10;
+            $offset = ($page - 1) * $limit;
+
+            $stmt = $db->prepare("SELECT * FROM events LIMIT ? OFFSET ?");
+            $stmt->bindValue(1, $limit, PDO::PARAM_INT);
+            $stmt->bindValue(2, $offset, PDO::PARAM_INT);
+            $stmt->execute();
             $events = $stmt->fetchAll();
-            response(200, $events);
+
+            $totalStmt = $db->query("SELECT COUNT(*) FROM events");
+            $total = $totalStmt->fetchColumn();
+
+            response(200, [
+                'events' => $events,
+                'total' => $total,
+                'page' => $page,
+                'limit' => $limit
+            ]);
         }
         break;
     
     case 'POST':
         $data = json_decode(file_get_contents("php://input"));
-        if (!isset($data->name) || !isset($data->date) || !isset($data->location) || !isset($data->price)) {
-            response(400, ["message" => "Missing required fields"]);
+        $errors = validateevents($data->name ?? '', $data->date ?? '', $data->location ?? '', $data->price ?? '' );
+        if (!empty($errors)) {
+            response(400, ["errors" => $errors]);
         }
         $sql = "INSERT INTO events (name, date, location, price) VALUES (?, ?, ?, ?)";
         $stmt = $db->prepare($sql);
@@ -129,8 +173,9 @@ switch ($method) {
         }
         $id = $request[0];
         $data = json_decode(file_get_contents("php://input"));
-        if (!isset($data->name) || !isset($data->date) || !isset($data->location) || !isset($data->price)) {
-            response(400, ["message" => "Missing required fields"]);
+        $errors = validateevents($data->name ?? '', $data->date ?? '', $data->location ?? '', $data->price ?? '');
+        if (!empty($errors)) {
+            response(400, ["errors" => $errors]);
         }
         $sql = "UPDATE events SET name = ?, date = ?, location = ?, price = ? WHERE id =?";
         $stmt = $db->prepare($sql);
@@ -164,53 +209,55 @@ switch ($method) {
 ###
 
 ### 4. Pengujian dengan Postman
-    1. Buka Postman
-    2. Buat request baru untuk setiap operasi berikut:
-    Daftar Endpoint API
-    1. Menampilkan semua data
-        Method : GET
-       URL: http://localhost/rest_events/events_api.php
-       Klik "Send"
-    2. Menampilkan detail data berdasarkan id (untuk events dengan ID 3)
-       Method : GET
-       URL: http://localhost/rest_events/events_api.php/3
-        Klik "Send"
-    3. Menambahkan data baru
-        Method : POST
-       URL : http://localhost/rest_events/events_api.php
-       Headers :
-       1. Key: Content-Type
-       2. Value: application/json
-       3. Body: Pilih "raw" dan "JSON" lalu isi
-          ```json
+1. Buka Postman
+2. Buat request baru untuk setiap operasi berikut:
+<br>Daftar Endpoint API
+#### 1. Menampilkan semua data
+   Method : GET
+   <br>URL: http://localhost/rest_events/events_api.php
+   <br>Klik "Send"
+#### 2. Menampilkan detail data berdasarkan id (untuk events dengan ID 3)
+   Method : GET
+   <br>URL: http://localhost/rest_events/events_api.php/3
+   <br>Klik "Send"
+#### 3. Menambahkan data baru
+   Method : POST
+   <br>URL : http://localhost/rest_events/events_api.php
+  <br> Headers :
+   1. Key: Content-Type
+   2. Value: application/json
+   3. Body: Pilih "raw" dan "JSON" lalu isi
+       
+          
           {
           "name": "ulang tahun",
           "date": "2024-11-19",
           "location": "Surabaya",
           "price": 5000000
           }
-          ```
-       4. Klik "Send"
-    4. Mengupdate data berdasarkan ID (untuk events dengan ID 2)
-       Method : PUT
-       URL : http://localhost/rest_events/events_api.php/2
-       Headers :
-       1. Key: Content-Type
-       2. Value: application/json
-       3. Body:  Pilih "raw" dan "JSON" lalu isi 
-        ```json
-        {
-        "name": " Bazar ",
-        "date": "2024-10-04",
-        "location": "Jakarta",
-        "price": "400000"
-       }
-        ````
-       4. Klik "Send"
-    5. Menghapus data berdasarkan ID (untuk events dengan ID 4)
-       Method : DELETE
-       URL : http://localhost/rest_events/events_api.php/4
-       Klik "Send"
+          
+4. Klik "Send"
+### 4. Mengupdate data berdasarkan ID (untuk events dengan ID 2)
+   Method : PUT
+   <br>URL : http://localhost/rest_events/events_api.php/2
+   <br>Headers :
+   1. Key: Content-Type
+   2. Value: application/json</br>
+   3. Body:  Pilih "raw" dan "JSON" lalu isi
+      
+            {
+            "name": " Bazar ",
+            "date": "2024-10-04",
+            "location": "Jakarta",
+            "price": "400000"
+           }
+            ````
+   4. Klik "Send"
+
+### 5. Menghapus data berdasarkan ID (untuk events dengan ID 4)
+   Method : DELETE
+   <br>URL : http://localhost/rest_events/events_api.php/4
+   <br>Klik "Send"
 
 
 
