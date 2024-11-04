@@ -43,8 +43,8 @@ INSERT INTO events (name, date, location, price) VALUES
 ###
 ### 3. Membuat File PHP untuk Web Service
    a. Buka text editor .
-   b. Buat file baru dan simpan sebagai events_api.php di dalam folder rest_events.
-   c. Salin dan tempel kode berikut ke dalam events_api.php:
+   b. Buat file baru dan simpan sebagai 'events_api.php' di dalam folder 'rest_events'.
+   c. Salin dan tempel kode berikut ke dalam 'events_api.php':
 
  ```php 
 <?php
@@ -166,19 +166,19 @@ switch ($method) {
 ### 4. Pengujian dengan Postman
     1. Buka Postman
     2. Buat request baru untuk setiap operasi berikut:
-    <br>Daftar Endpoint API</br>
+    Daftar Endpoint API
     1. Menampilkan semua data
-       <br>Method : GET</br>
+        Method : GET
        URL: http://localhost/rest_events/events_api.php
-       <br>Klik "Send"</br>
+       Klik "Send"
     2. Menampilkan detail data berdasarkan id (untuk events dengan ID 3)
-       <br>Method : GET</br>
+       Method : GET
        URL: http://localhost/rest_events/events_api.php/3
-       <br>Klik "Send"</br>
+        Klik "Send"
     3. Menambahkan data baru
-       <br>Method : POST</br>
+        Method : POST
        URL : http://localhost/rest_events/events_api.php
-       <br>Headers :</br>
+       Headers :
        1. Key: Content-Type
        2. Value: application/json
        3. Body: Pilih "raw" dan "JSON" lalu isi
@@ -192,9 +192,9 @@ switch ($method) {
           ```
        4. Klik "Send"
     4. Mengupdate data berdasarkan ID (untuk events dengan ID 2)
-       <br>Method : PUT</br>
+       Method : PUT
        URL : http://localhost/rest_events/events_api.php/2
-       <br>Headers :</br>
+       Headers :
        1. Key: Content-Type
        2. Value: application/json
        3. Body:  Pilih "raw" dan "JSON" lalu isi 
@@ -208,9 +208,9 @@ switch ($method) {
         ````
        4. Klik "Send"
     5. Menghapus data berdasarkan ID (untuk events dengan ID 4)
-       <br>Method : DELETE</br>
+       Method : DELETE
        URL : http://localhost/rest_events/events_api.php/4
-       <br>Klik "Send"</br>
+       Klik "Send"
 
 
 
