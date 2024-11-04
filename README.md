@@ -9,16 +9,16 @@ Nim : 21.01.55.0005 </br>
 Deskripsi project :
 Project ini merupakan project Ujian Tengah Semester web service development. Project ini berisi Web Service REST untuk sistem manajemen sesuai objek yang ditentukan menggunakan PHP dan MySQL. Web Service harus mendukung operasi CRUD. Dan dapat di uji menggunakan postman. Dalam project ini events menjadi objek Rest API, dengan struktur tabel events terdiri dari id, name, date, location, dan price.
 
-Alat yang Dibutuhkan
+### Alat yang Dibutuhkan
 1. XAMPP (atau server web lain dengan PHP dan MySQL)
 2. Text editor (misalnya Visual Studio Code, Notepad++, dll)
 3. Postman
 
-1. Langkah-langkah :
+### 1. Langkah-langkah :
     1. Persiapan Lingkungan
     2. Instal XAMPP jika belum ada.
     3. Buat folder baru bernama rest_events di dalam direktori htdocs XAMPP Anda.
-2. Membuat Database :
+### 2. Membuat Database :
      1. Buka phpMyAdmin
      2. Buat database baru bernama Events 
      3. Pilih database Events , lalu buka tab SQL
@@ -41,7 +41,7 @@ INSERT INTO events (name, date, location, price) VALUES
 ('wedding', '2024-12-28', 'Semarang', '80000000');
 ```
 ###
-3. Membuat File PHP untuk Web Service
+### 3. Membuat File PHP untuk Web Service
    a. Buka text editor .
    b. Buat file baru dan simpan sebagai events_api.php di dalam folder rest_events.
    c. Salin dan tempel kode berikut ke dalam events_api.php:
@@ -163,7 +163,7 @@ switch ($method) {
 ````
 ###
 
-4. Pengujian dengan Postman
+### 4. Pengujian dengan Postman
     1. Buka Postman
     2. Buat request baru untuk setiap operasi berikut:
     <br>Daftar Endpoint API</br>
