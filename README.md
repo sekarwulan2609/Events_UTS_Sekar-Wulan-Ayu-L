@@ -42,9 +42,9 @@ INSERT INTO events (name, date, location, price) VALUES
 ```
 ###
 ### 3. Membuat File PHP untuk Web Service
-   a. Buka text editor .
-   b. Buat file baru dan simpan sebagai 'events_api.php' di dalam folder 'rest_events'.
-   c. Salin dan tempel kode berikut ke dalam 'events_api.php':
+   <br>a. Buka text editor .</br>
+   <br>b. Buat file baru dan simpan sebagai `events_api.php` di dalam folder `rest_events`.</br>
+   <br>c. Salin dan tempel kode berikut ke dalam `events_api.php`:</br>
 
  ```php 
 <?php
