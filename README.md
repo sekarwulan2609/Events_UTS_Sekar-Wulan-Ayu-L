@@ -20,11 +20,11 @@ Membuat dan menguji web service REST untuk manajemen events menggunakan PHP dan 
 ### 1. Langkah-langkah :
    1. Persiapan Lingkungan
    2. Instal XAMPP jika belum ada.
-   3. Buat folder baru bernama rest_events di dalam direktori htdocs XAMPP Anda.
+   3. Buat folder baru bernama `rest_events` di dalam direktori `htdocs` XAMPP Anda.
 ### 2. Membuat Database :
-   1. Buka phpMyAdmin
-   2. Buat database baru bernama Events 
-   3. Pilih database Events , lalu buka tab SQL
+   1. Buka phpMyAdmin (http://localhost/phpmyadmin) 
+   2. Buat database baru bernama `events`
+   3. Pilih database `events` , lalu buka tab SQL
    4. Jalankan query SQL berikut untuk membuat tabel dan menambahkan data sampel:
  ```sql
 CREATE TABLE events (
